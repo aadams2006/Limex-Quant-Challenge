@@ -13,7 +13,7 @@ with open('credentials.json') as f:
 CLIENT_ID = creds['client_id']
 CLIENT_SECRET = creds['client_secret']
 USERNAME = 'alexglobe20@gmail.com'
-PASSWORD = 'Frayuuio_209'
+PASSWORD = passvar
 ACCOUNT_NUMBER = 'dmo-c432'
 
 AUTH_URL = creds['auth_url'] + '/connect/token'
