@@ -1,0 +1,23 @@
+# Ignore Python cache and build artefacts
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment & dependency management
+.env
+.venv/
+venv/
+
+# Local credentials and secrets
+credentials.json
+*.pem
+*.key
+
+# Local data outputs
+trade_log.csv
+lime_symbols_full.csv
+lime_symbols_liquid.csv
+
+# OS-specific files
+.DS_Store
+Thumbs.db

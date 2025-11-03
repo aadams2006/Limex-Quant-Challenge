@@ -1,18 +1,17 @@
 import requests
-import json
 import pandas as pd
 
-# Load credentials
-with open('credentials.json') as f:
-    creds = json.load(f)
+from config import get_credentials
 
-CLIENT_ID = creds['client_id']
-CLIENT_SECRET = creds['client_secret']
-USERNAME = 'alexglobe20@gmail.com'
-PASSWORD = 'Frayuuio_209'
-ACCOUNT_NUMBER = 'dmo-c432'
-AUTH_URL = creds['auth_url'].rstrip('/') + '/connect/token'
-BASE_URL = creds['base_url'].rstrip('/')
+# Load credentials securely (prefers environment variables over local files)
+creds = get_credentials()
+
+CLIENT_ID = creds.client_id
+CLIENT_SECRET = creds.client_secret
+USERNAME = creds.username
+PASSWORD = creds.password
+AUTH_URL = creds.auth_url.rstrip('/') + '/connect/token'
+BASE_URL = creds.base_url.rstrip('/')
 SYMBOLS_URL = BASE_URL + '/marketdata/symbols'
 
 # Get Access Token
