@@ -2,22 +2,22 @@ import asyncio
 import aiohttp
 import pandas as pd
 import numpy as np
-import json
 import time
 import csv
 
-# Load Credentials
-with open('credentials.json') as f:
-    creds = json.load(f)
+from config import get_credentials
 
-CLIENT_ID = creds['client_id']
-CLIENT_SECRET = creds['client_secret']
-USERNAME = creds['username']
-PASSWORD = creds['password']
-ACCOUNT_NUMBER = USERNAME.split("@")[0] + "@demo"
+# Load Credentials securely (prefers environment variables over local files)
+creds = get_credentials()
 
-AUTH_URL = creds['auth_url'] + '/connect/token'
-BASE_URL = creds['base_url']
+CLIENT_ID = creds.client_id
+CLIENT_SECRET = creds.client_secret
+USERNAME = creds.username
+PASSWORD = creds.password
+ACCOUNT_NUMBER = creds.resolved_account_number
+
+AUTH_URL = creds.auth_url.rstrip('/') + '/connect/token'
+BASE_URL = creds.base_url.rstrip('/')
 ORDER_URL = BASE_URL + '/orders/place'
 PRICE_HIST_URL = BASE_URL + '/marketdata/history'
 
